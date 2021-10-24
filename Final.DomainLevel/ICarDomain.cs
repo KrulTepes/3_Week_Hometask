@@ -15,5 +15,7 @@ namespace Final.DomainLevel
         public bool Delete(DataModel datamodel);
 
         public bool Update(DataModel dataModel);
+
+        public List<DataModel> GetModelsByPagination();
     }
 }

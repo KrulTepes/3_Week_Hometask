@@ -51,5 +51,10 @@ namespace Final.DomainLevel
             _myDBContext.SaveChanges();
             return true;
         }
+
+        public List<DataModel> GetModelsByPagination()
+        {
+            return _myDBContext.Cars.ToList();
+        }
     }
 }

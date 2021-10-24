@@ -21,7 +21,8 @@ namespace Final.Controllers
         }
 
         [Route("db/create")]
-        public IActionResult Create(RequestCar req)
+        [HttpPost]
+        public IActionResult Create([FromBody] RequestCar req)
         {
             if (req == null)
                 return StatusCode(500);
@@ -37,6 +38,7 @@ namespace Final.Controllers
         }
 
         [Route("db/delete")]
+        [HttpDelete]
         public IActionResult Delete(RequestCarDeleteUpdate req)
         {
             if (req == null)
@@ -45,7 +47,8 @@ namespace Final.Controllers
         }
 
         [Route("db/update")]
-        public IActionResult Update(RequestCarDeleteUpdate req)
+        [HttpPut]
+        public IActionResult Update([FromBody] RequestCarDeleteUpdate req)
         {
             if (req == null)
                 return StatusCode(500);
@@ -54,21 +57,13 @@ namespace Final.Controllers
             return Ok(_carService.Update(new Car { Id = req.Id , Name = req.Name}) == true ? "Изменение прошло успешно." : "Не удалось изменить объект");
         }
 
-        /* 
-        [Route("db/update")]
-        public IActionResult Update(Car car)
+        [Route("db/getpagination/{page}&{count}")]
+        [HttpGet]
+        public IActionResult GetPagination(int? page, int? count)
         {
-            if (car.Id == null || car.Name == null)
-                return BadRequest();
-            return Ok(_carService.Update(car));
+            if (page == null || count == null)
+                return StatusCode(500);
+            return Ok(_carService.GetCarsByPagination(page, count));
         }
-        [Route("db/get/{index}&{count}")]
-        [HttpGet("{index}&{count}")]
-        public IActionResult Get(int? index, int? count)
-        {
-            return Ok(_carService.GetCarsByPagination(index, count));
-        } */
-
-
     }
 }

@@ -37,6 +37,20 @@ namespace Final.ServiceLevel
             return result;
         }
 
+        public List<Car> GetCarsByPagination(int? page, int? count)
+        {
+            List<DataModel> newList = _carDomain.GetModelsByPagination();
+
+            List<Car> result = new List<Car>();
+
+            foreach (var item in newList)
+            {
+                result.Add(new Car { Id = item.Id, Name = item.Name});
+            }
+
+            return result.OrderBy(x => x.Id).Skip(((int)page - 1) * (int)count).Take((int)count).ToList();
+        }
+
         public bool Delete(Car car)
         {
             var newCar = _carDomain.Delete(new DataModel { Name = car.Name, Id = car.Id });

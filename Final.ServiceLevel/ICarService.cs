@@ -15,5 +15,7 @@ namespace Final.ServiceLevel
         List<Car> GetAll();
 
         bool Update(Car car);
+
+        List<Car> GetCarsByPagination(int? page, int? count);
     }
 }
