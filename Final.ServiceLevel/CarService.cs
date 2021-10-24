@@ -1,9 +1,7 @@
 ﻿using Final.DatabaseLevel;
 using Final.DomainLevel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Final.ServiceLevel
 {
