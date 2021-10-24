@@ -12,7 +12,7 @@ namespace Final.DomainLevel
 
         public List<DataModel> GetAll();
 
-        public DataModel Delete(DataModel datamodel);
+        public bool Delete(DataModel datamodel);
 
         public DataModel Update(DataModel dataModel);
     }

@@ -41,7 +41,7 @@ namespace Final.ServiceLevel
         {
             var newCar = _carDomain.Delete(new DataModel { Name = car.Name, Id = car.Id });
 
-            return newCar != null ? true : false; 
+            return newCar; 
         }
 
         public bool Update(Car car)

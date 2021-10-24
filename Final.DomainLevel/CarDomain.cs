@@ -31,15 +31,15 @@ namespace Final.DomainLevel
             return _myDBContext.Cars.ToList();
         }
 
-        public DataModel Delete(DataModel datamodel)
+        public bool Delete(DataModel datamodel)
         {
             if (datamodel == null)
-                return null;
+                return false;
 
             var newObj = _myDBContext.Cars.Where(x => x.Id == datamodel.Id).FirstOrDefault();
             _myDBContext.Remove(newObj);
             _myDBContext.SaveChanges();
-            return datamodel;
+            return true;
         }
 
         public DataModel Update(DataModel datamodel)
