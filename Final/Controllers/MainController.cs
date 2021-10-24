@@ -15,6 +15,7 @@ namespace Final.Controllers
         }
 
         [Route("db/create")]
+        [HttpPost]
         public IActionResult Create([FromBody] RequestCar req)
         {
             if (req == null)
