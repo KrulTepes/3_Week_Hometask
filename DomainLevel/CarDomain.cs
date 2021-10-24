@@ -25,7 +25,7 @@ namespace Final.DomainLevel
 
         public void Add(Car car)
         {
-            if(car != null)
+            if (car != null)
             {
                 _myDBContext.Cars.Add(car);
                 _myDBContext.SaveChanges();
@@ -34,7 +34,7 @@ namespace Final.DomainLevel
 
         public void Update(Car car)
         {
-            if(car != null)
+            if (car != null)
             {
                 _myDBContext.Cars.Update(car);
                 _myDBContext.SaveChanges();
@@ -43,7 +43,7 @@ namespace Final.DomainLevel
 
         public void Delete(Car car)
         {
-            if(car != null)
+            if (car != null)
             {
                 _myDBContext.Cars.Remove(car);
                 _myDBContext.SaveChanges();

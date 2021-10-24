@@ -1,6 +1,4 @@
-﻿using Final.Models;
-using Final.ServiceLevel;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +9,7 @@ namespace Final.DatabaseLevel
     public class MyDBContext : DbContext
     {
         // Host=localhost;Port=5432;Database=MyDatabase;Username=postgres;Password=admin
-        public DbSet<Car> Cars { get; set; }
+        public DbSet<DataModel> Cars { get; set; }
 
         public MyDBContext(DbContextOptions<MyDBContext> options) : base(options)
         {
