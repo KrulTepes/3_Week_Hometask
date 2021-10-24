@@ -28,10 +28,7 @@ namespace Final
         }
 
         public void Configure(
-            IApplicationBuilder app,
-            IWebHostEnvironment env,
-            ICarService _ICarService,
-            ICarDomain _IDomain
+            IApplicationBuilder app
             )
         {
             app.UseRouting();

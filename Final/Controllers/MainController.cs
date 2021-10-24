@@ -18,7 +18,7 @@ namespace Final.Controllers
         public IActionResult Create([FromBody] RequestCar req)
         {
             if (req == null)
-                return StatusCode(500);
+                return StatusCode(400);
             int? id = _carService.Create(new Car { Name = req.Name });
             return Ok(id == null ? StatusCode(500) : "Объект успешно создан");
         }
@@ -34,7 +34,7 @@ namespace Final.Controllers
         public IActionResult Delete(RequestCarDeleteUpdate req)
         {
             if (req == null)
-                return StatusCode(500);
+                return StatusCode(400);
             return Ok(_carService.Delete(new Car { Id = req.Id }) == true ? "Удаление прошло успешно." : "Не удалось удалить объект");
         }
 
@@ -42,9 +42,9 @@ namespace Final.Controllers
         public IActionResult Update([FromBody] RequestCarDeleteUpdate req)
         {
             if (req == null)
-                return StatusCode(500);
+                return StatusCode(400);
             if (req.Name == null || req.Id == null)
-                return StatusCode(500);
+                return BadRequest();
             return Ok(_carService.Update(new Car { Id = req.Id , Name = req.Name}) == true ? "Изменение прошло успешно." : "Не удалось изменить объект");
         }
 
@@ -53,8 +53,8 @@ namespace Final.Controllers
         public IActionResult GetPagination(int? page, int? count)
         {
             if (page == null || count == null)
-                return StatusCode(500);
-            return Ok(_carService.GetCarsByPagination(page, count));
+                return BadRequest();
+            return Ok(_carService.GetCarsByPagination(page, count) != null ? _carService.GetCarsByPagination(page, count) : "Не удалось провести пагинацию");
         }
     }
 }
