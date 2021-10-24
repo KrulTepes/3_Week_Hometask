@@ -42,16 +42,14 @@ namespace Final.DomainLevel
             return true;
         }
 
-        public DataModel Update(DataModel datamodel)
+        public bool Update(DataModel datamodel)
         {
             if (datamodel == null)
-                return null;
+                return false;
 
-            var newObj = _myDBContext.Cars.Where(x => x.Id == datamodel.Id).FirstOrDefault();
-            newObj.Name = datamodel.Name;
-            _myDBContext.Cars.Update(newObj);
+            _myDBContext.Cars.Update(new DataModel { Name = datamodel.Name, Id = datamodel.Id});
             _myDBContext.SaveChanges();
-            return datamodel;
+            return true;
         }
     }
 }

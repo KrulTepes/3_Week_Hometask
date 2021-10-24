@@ -48,7 +48,7 @@ namespace Final.ServiceLevel
         {
             var newCar = _carDomain.Update(new DataModel { Name = car.Name, Id = car.Id });
 
-            return newCar != null ? true : false;
+            return newCar;
         }
     }
 }

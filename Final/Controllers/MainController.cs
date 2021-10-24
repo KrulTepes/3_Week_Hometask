@@ -44,14 +44,14 @@ namespace Final.Controllers
             return Ok(_carService.Delete(new Car { Id = req.Id }) == true ? "Удаление прошло успешно." : "Не удалось удалить объект");
         }
 
-        [Route("db/update/{value}")]
-        public IActionResult Update(RequestCarDeleteUpdate req, string value)
+        [Route("db/update")]
+        public IActionResult Update(RequestCarDeleteUpdate req)
         {
             if (req == null)
                 return StatusCode(500);
-            if (value == null)
+            if (req.Name == null || req.Id == null)
                 return StatusCode(500);
-            return Ok(_carService.Update(new Car { Id = req.Id , Name = value}) == true ? "Изменение прошло успешно." : "Не удалось изменить объект");
+            return Ok(_carService.Update(new Car { Id = req.Id , Name = req.Name}) == true ? "Изменение прошло успешно." : "Не удалось изменить объект");
         }
 
         /* 
@@ -62,10 +62,6 @@ namespace Final.Controllers
                 return BadRequest();
             return Ok(_carService.Update(car));
         }
-
-
-        
-
         [Route("db/get/{index}&{count}")]
         [HttpGet("{index}&{count}")]
         public IActionResult Get(int? index, int? count)

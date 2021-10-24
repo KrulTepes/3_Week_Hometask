@@ -14,6 +14,6 @@ namespace Final.DomainLevel
 
         public bool Delete(DataModel datamodel);
 
-        public DataModel Update(DataModel dataModel);
+        public bool Update(DataModel dataModel);
     }
 }
