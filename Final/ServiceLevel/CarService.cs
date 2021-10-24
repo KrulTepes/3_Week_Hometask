@@ -10,27 +10,24 @@ namespace Final.ServiceLevel
 {
     public class CarService : ICarService
     {
-        private readonly IDomain _domain;
+        private readonly ICarDomain _domain;
         
-        public CarService(IDomain domain)
+        public CarService(ICarDomain domain)
         {
             _domain = domain;
         }
 
         public string Create(Car car)
         {
-            if (car.Id == null || car.Name == null)
-                return "Не удалось создать объект: один из параметров равен null.";
+
             _domain.Add(car);
-            return $"Объект {car.Name} успешно создан с ключем {car.Id}";
+            return car.Id == 0 ? "Fail" : "Success";
         }
 
         public string Delete(Car car)
         {
-            if (car.Id == null || car.Name == null)
-                return "Не удалось создать объект: один из параметров равен null.";
             _domain.Delete(car);
-            return $"Объект {car.Name} с ключем {car.Id} был успешно удален";
+            return "Success";
         }
 
         public List<Car> GetAll()
@@ -40,10 +37,8 @@ namespace Final.ServiceLevel
 
         public string Update(Car car)
         {
-            if (car.Id == null || car.Name == null)
-                return "Не удалось обновить объект: один из параметров нового объекта равен null";
             _domain.Update(car);
-            return $"Объект под ключу {car.Id} был успешно изменён";
+            return "Success";
         }
 
         public List<Car> GetCarsByPagination(int? index, int? count)

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Final.DomainLevel
 {
-    public class Domain : IDomain
+    public class CarDomain : ICarDomain
     {
         // public DbSet<Car> Cars { get; set; }
 
         private readonly MyDBContext _myDBContext;
 
-        public Domain(MyDBContext myDBContext)
+        public CarDomain(MyDBContext myDBContext)
         {
             _myDBContext = myDBContext;
         }

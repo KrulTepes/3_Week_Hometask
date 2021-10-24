@@ -23,7 +23,7 @@ namespace Final
             services.AddDbContext<MyDBContext>(options => options.UseNpgsql(connectionString));
 
             services.AddTransient<ICarService, CarService>();
-            services.AddTransient<IDomain, Domain>();
+            services.AddScoped<ICarDomain, CarDomain>();
             services.AddControllers();
         }
 
@@ -31,7 +31,7 @@ namespace Final
             IApplicationBuilder app,
             IWebHostEnvironment env,
             ICarService _ICarService,
-            IDomain _IDomain
+            ICarDomain _IDomain
             )
         {
             app.UseRouting();

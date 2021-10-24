@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Final.DomainLevel
 {
-    public interface IDomain
+    public interface ICarDomain
     {
         List<Car> GetAll();
 

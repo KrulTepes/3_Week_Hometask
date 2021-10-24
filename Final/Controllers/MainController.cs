@@ -12,43 +12,49 @@ namespace Final.Controllers
 {
     public class MainController : Controller
     {
-        private readonly ICarService _ICarService;
+        private readonly ICarService _carService;
 
         public MainController(ICarService carService)
         {
-            _ICarService = carService;
+            _carService = carService;
         }
 
-        [Route("db/create")] // Создание объекта
+        [Route("db/create")]
         public IActionResult Create(Car car)
         {
-            return Ok(_ICarService.Create(car));
+            if (car.Id == null || car.Name == null)
+                return BadRequest();
+            return Ok(_carService.Create(car));
         }
 
         [Route("db/delete")]
         public IActionResult Delete(Car car)
         {
-            return Ok(_ICarService.Delete(car));
-        }
-
-        
-        [Route("db/getall")]
-        public IActionResult Get()
-        {
-            return Ok(_ICarService.GetAll());
+            if (car.Id == null || car.Name == null)
+                return BadRequest();
+            return Ok(_carService.Delete(car));
         }
 
         [Route("db/update")]
         public IActionResult Update(Car car)
         {
-            return Ok(_ICarService.Update(car));
+            if (car.Id == null || car.Name == null)
+                return BadRequest();
+            return Ok(_carService.Update(car));
+        }
+
+
+        [Route("db/getall")]
+        public IActionResult Get()
+        {
+            return Ok(_carService.GetAll());
         }
 
         [Route("db/get/{index}&{count}")]
-        [HttpGet("{index}&{count}")] // Получение объедков по пагинации
+        [HttpGet("{index}&{count}")]
         public IActionResult Get(int? index, int? count)
         {
-            return Ok(_ICarService.GetCarsByPagination(index, count));
+            return Ok(_carService.GetCarsByPagination(index, count));
         }
 
 
