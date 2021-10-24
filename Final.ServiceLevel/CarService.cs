@@ -23,11 +23,11 @@ namespace Final.ServiceLevel
 
         public List<Car> GetAll()
         {
-            List<DataModel> newList = _carDomain.GetAll();
+            List<DataModel> temp = _carDomain.GetAll();
 
             List<Car> result = new List<Car>();
 
-            foreach(var item in newList)
+            foreach(var item in temp)
             {
                 result.Add(new Car { Id = item.Id, Name = item.Name });
             }
@@ -37,11 +37,11 @@ namespace Final.ServiceLevel
 
         public List<Car> GetCarsByPagination(int? page, int? count)
         {
-            List<DataModel> newList = _carDomain.GetModelsByPagination();
+            List<DataModel> temp = _carDomain.GetModelsByPagination();
 
             List<Car> result = new List<Car>();
 
-            foreach (var item in newList)
+            foreach (var item in temp)
             {
                 result.Add(new Car { Id = item.Id, Name = item.Name});
             }

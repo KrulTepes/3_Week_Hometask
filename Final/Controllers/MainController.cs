@@ -15,7 +15,6 @@ namespace Final.Controllers
         }
 
         [Route("db/create")]
-        [HttpPost]
         public IActionResult Create([FromBody] RequestCar req)
         {
             if (req == null)
@@ -32,7 +31,6 @@ namespace Final.Controllers
         }
 
         [Route("db/delete")]
-        [HttpDelete]
         public IActionResult Delete(RequestCarDeleteUpdate req)
         {
             if (req == null)
@@ -41,7 +39,6 @@ namespace Final.Controllers
         }
 
         [Route("db/update")]
-        [HttpPut]
         public IActionResult Update([FromBody] RequestCarDeleteUpdate req)
         {
             if (req == null)
